@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="alert-box" id="alert">
+        <p id="alertText">Alert박스</p>
+        <button id="close">X</button>
+        
+    </div>
+    <button onclick="openAlert('block', '아이디를 입력안하셨어요')">버튼1</button>
+    <button onclick="openAlert('block', '비번을 입력안하셨어요')">버튼2</button>
+
+    <script>
+        function openAlert(dis, text) {
+            document.getElementById('alertText').innerHTML = text;
+            document.getElementById('alert').style.display = dis;
+        } 
+
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementById('alert').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
