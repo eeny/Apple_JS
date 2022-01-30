@@ -42,6 +42,11 @@
     justify-content: space-between;
     padding: 15px;
     align-items: center;
+    background-color: transparent;
+    position: fixed;
+    z-index: 5; /* 뒤로 가기 앞으로 가기 가능 */
+    width: 100%;
+    transition: all 1s;
 }
 
 .nav-sub {
@@ -76,15 +81,44 @@
     transform: translateY(0px);
 }
 
+.slide-container {
+    width: 300vw;
+    transition: transform 1s; /* all로 했을 때 화면 크기 변화시 오류 발생하므로 정확하게 지정하기 */
+}
 
+.slide-box {
+    width: 100vw; /* viewport width(실제 브라우저 화면의 폭) */
+    float: left;
+}
 
+.slide-box img {
+    width: 100%;
+}
 
+.slide-next {
+    position: absolute;
+    top: 45%;
+    right: 0;
+}
 
+.slide-prev {
+    position: absolute;
+    top: 45%;
+    left: 0;
+}
 
+.nav-white {
+    background-color: white;
+}
 
+.large-logo {
+    font-size: 30px;
+    transition: all 1s;
+}
 
-
-
+.small-logo {
+    font-size: 22px;
+}
 
 
 
