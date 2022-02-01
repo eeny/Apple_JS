@@ -24,7 +24,8 @@
     width: 100%;
     height: 100%;
     display: block;
-    transition: all 1s; /* CSS로 애니메이션 만들기 */
+    transition: all 1s;
+    /* CSS로 애니메이션 만들기 */
     /* margin-top: -1000px; */
     transform: translateY(-1000px);
 }
@@ -44,7 +45,8 @@
     align-items: center;
     background-color: transparent;
     position: fixed;
-    z-index: 5; /* 뒤로 가기 앞으로 가기 가능 */
+    z-index: 5;
+    /* 뒤로 가기 앞으로 가기 가능 */
     width: 100%;
     transition: all 1s;
 }
@@ -74,7 +76,8 @@
     background: black;
     color: white;
     position: fixed;
-    margin-left: -150px; /* 왼쪽으로 숨기기 */
+    margin-left: -150px;
+    /* 왼쪽으로 숨기기 */
 }
 
 .slide-down {
@@ -83,11 +86,13 @@
 
 .slide-container {
     width: 300vw;
-    transition: transform 1s; /* all로 했을 때 화면 크기 변화시 오류 발생하므로 정확하게 지정하기 */
+    transition: transform 1s;
+    /* all로 했을 때 화면 크기 변화시 오류 발생하므로 정확하게 지정하기 */
 }
 
 .slide-box {
-    width: 100vw; /* viewport width(실제 브라우저 화면의 폭) */
+    width: 100vw;
+    /* viewport width(실제 브라우저 화면의 폭) */
     float: left;
 }
 
@@ -120,5 +125,45 @@
     font-size: 22px;
 }
 
+/* 탭기능 */
+ul.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
 
+ul.list::after {
+    content: '';
+    display: block;
+    clear: both;
+}
 
+.tab-button {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    float: left;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.active {
+    border-top: 2px solid orange;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid white;
+    border-left: 1px solid #ccc;
+    color: black;
+    margin-top: -2px;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+}
+
+.show {
+    display: block;
+}
