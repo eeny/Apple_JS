@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 직접 추가한 제이쿼리 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+    <button>버튼</button>
+    <h1>abcdefghi</h1>
+
+    <script>
+        // 한글자씩 출현하는 Typewriting 애니메이션 만들기
+
+        // 버튼을 누르면 
+        // h1을 빈칸으로 만들고
+        // 0.5초 후에 a를 h1안에 입력
+        // 0.5초 후에 ab를 h1안에 입력 또는 h1안에 b를 더함
+        // 0.5초 후에 h1안에 c를 더함
+
+        var h1Tag = document.querySelector('h1');
+        var originH1Text = document.querySelector('h1').innerHTML;
+
+        $('button').click(function () {
+            h1Tag.innerHTML = '';
+
+            // setTimeout(function () {
+            //     h1Tag.innerHTML = h1Tag.innerHTML + originH1Text[0];
+            // }, 500);
+
+            // setTimeout(function () {
+            //     h1Tag.innerHTML = h1Tag.innerHTML + originH1Text[1];
+            // }, 1000); // 똑같이 500이라고 하면 ab가 같이 0.5만에 나타나버림
+
+            // setTimeout(function () {
+            //     h1Tag.innerHTML = h1Tag.innerHTML + originH1Text[2];
+            // }, 1500);
+
+            // 반복문으로 줄여보기
+            typing();
+
+        });
+
+        function typing(h1Tag, originH1Text) { // 변수를 파라미터로 바꿔줘야 다른데서도 적용이 가능하다!
+            var sec = 500;
+            for (let i = 0; i < originH1Text.length; i++) {
+                setTimeout(function () {
+                    h1Tag.innerHTML = h1Tag.innerHTML + originH1Text[i];
+                }, sec);
+                sec += 500;
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

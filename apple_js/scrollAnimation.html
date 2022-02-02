@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <title>스크롤 위치에 따라 변하는 애니메이션</title>
+</head>
+<body>
+    
+    <div class="card-background">
+        <div class="card-box">
+            <img src="card1.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="card2.png" alt="">
+        </div>
+        <div class="card-box">
+            <img src="card3.png" alt="">
+        </div>
+    </div>
+
+
+    <script>
+
+        // 화면이 스크롤 될 때마다 실행해주세요~
+        $(window).scroll(function () {
+            var scrollHeight = $(window).scrollTop(); // 현재 스크롤 위치
+            console.log(scrollHeight);
+
+            // 650 ~ 1150 까지 스크롤바를 내리면
+            // 첫째카드의 opacity 1 ~ 0으로 서서히 변경해주셈
+            var a = -1/500;
+            var b = 115/50;
+            var y = a * scrollHeight + b; // 높이가 650 ~ 1150일 때, 0 ~ 1이 되는 변수
+
+            $('.card-box').eq(0).css('opacity', y);
+
+            // 650 ~ 1150 까지 스크롤바를 내리면
+            // 첫째카드의 scale 1 ~ 0.9 로 서서히 변경해주셈
+            var z = (-1/5000) * scrollHeight + (565/500);
+            $('.card-box').eq(0).css('transform', `scale(${z})`);
+
+        });
+
+    </script>
+
+</body>
+</html>

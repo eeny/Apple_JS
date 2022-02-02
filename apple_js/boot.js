@@ -1,3 +1,38 @@
+        // Hammer.js로 이미지 슬라이드 터치 기능 만들기
+        var image1 = document.querySelectorAll('.slide-box img')[0];
+        
+        var manager = new Hammer.Manager(image1);
+        manager.add(new Hammer.Pan( { threshold: 0 } ));
+
+        manager.on('pan', function (e) {
+            // e.deltaX : (-)왼쪽 (+)오른쪽으로 이동한 거리를 알 수 있음
+            console.log(e.deltaX);
+
+            // 만약에 내가 왼쪽으로 그림을 슬라이드 했을 때...
+            if (e.deltaX < -1) {
+                $('.slide-container').css('transform', `translateX(${e.deltaX}vw)`);
+
+                // 마우스를 떼면 이미지2가 쇽 변해야한다
+                // 터치 중에는 transforming이 안돼야 하고
+                // 터치가 끝나면 이미지2로 서서히 변경(transforming)이 돼야함
+                
+                // e.isFinal 터치가 끝났다
+
+                if (e.isFinal) {
+                    $('.slide-container').addClass('transforming');
+                    $('.slide-container').css('transform', 'translateX(-100vw)');
+                    
+                    // 0.5s 이후에 transforming 클래스 제거
+                    setTimeout(function () {
+                        $('.slide-container').removeClass('transforming');
+                    }, 500);
+                }
+
+            }
+        });
+        
+        
+        
         // 탭 기능 다시 만들기 - 이벤트 버블링 응용과 dataset
         // 이벤트 리스너를 적게 사용하면 메모리 절약이 가능하다!!!
 

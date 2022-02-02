@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <!-- 직접 추가한 제이쿼리 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <pre>
+        서버 : 접속자가 요청을 하면 데이터를 갖다줌
+        요청 : GET / POST
+        GET : URL을 입력해서 요청함 (읽기)
+        POST : 숨겨서 뭔가 정보를 전달하거나 요청함 (쓰기)
+        
+        AJAX : 서버에다가 요청을 할 수 있게 도와주는데
+        새로고침 없이 요청할 수 있음
+        
+        예제 임시서버
+        https://codingapple1.github.io/hello.txt
+        https://codingapple1.github.io/data.json
+    </pre>
+
+    <h4 id="hello">임시글씨</h4>
+    <button class="btn btn-danger" id="btn">버튼</button>
+
+
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <button class="btn btn-danger" id="showBtn">상품보여주기</button>
+
+
+    <script>
+        // Ajax의 기본 사용법과 가져온 데이터를 확인하는 방법
+        // Q. URL을 어디로 요청하는지 아는 방법은? 서버개발자들의 API문서를 참고하면 된다...
+        $.ajax({
+            url: 'https://codingapple1.github.io/hello.txt',
+            type: 'GET'
+
+        }).done(function (data) { // 요청 성공시 실행할 코드
+            console.log(data); // data == 받아온 데이터
+
+        }).fail(function () { // 요청 실패시 실행할 코드
+            console.log('fail');
+            
+        }).always(function () { // 요청시 항상 실행할 코드
+            console.log('always');
+
+        });
+
+
+        // 버튼을 누르면 Ajax요청으로 받아온 데이터를 HTML에 집어넣기
+        $('#btn').click(function () {
+
+            $.ajax({
+                url: 'https://codingapple1.github.io/hello.txt',
+                type: 'GET'
+            }).done(function (data) {
+                $('#hello').html(data);
+            });
+
+        });
+
+        $('#showBtn').click(function () {
+            
+            $.ajax({
+                url: 'https://codingapple1.github.io/data.json',
+                type: 'GET'
+            }).done(function (data) {
+                $('.card-img-top').attr('src', data.img);
+                $('.card-title').html(data.brand + ' - ' + data.model);
+                $('.card-text').html(data.price);
+            });
+
+        });
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
